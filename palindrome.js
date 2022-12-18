@@ -1,12 +1,20 @@
-function checkPalindrome(){
-    const len = string.length;
-    for(let i=0; i< len/2; i++){
-        if(string[i] !== string[len-1 -i]){
-            return "String is not Palindrome";
+document.getElementById("btn").addEventListener("click",function(){
+    let txt = document.getElementById("string-input").value;
+    checkPalindrome(txt);
+  });
+  
+  function checkPalindrome(txt){
+    let txt_new = txt.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    let len = txt_new.length;
+    let halfLen = Math.floor( len/2 );
+    let result =document.getElementById("output");
+    let i;
+  
+    for( i = 0; i < halfLen; i++){
+        if( txt_new[i] !== txt_new[len-1-i]){
+            result.textContent = "Sorry! Not a palindrome";
+            return;
+        }
+        result.textContent = "Yes! It's a palindrome";
     }
-}
-    return "String is Palindrome";
-}
-const string = prompt('Enter a string: ');
-const value = checkPalindrome(string);
-console.log(value);
+  }
